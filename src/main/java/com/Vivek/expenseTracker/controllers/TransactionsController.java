@@ -132,6 +132,16 @@ public class TransactionsController {
         return "redirect:/transactions"; // Redirect back to transaction list
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteTransaction(@PathVariable Long id,
+                                    RedirectAttributes redirectAttributes) {
+
+        transactionRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("successMessage",
+                "Transaction deleted successfully!");
+
+        return "redirect:/transactions";
+    }
 
 
 

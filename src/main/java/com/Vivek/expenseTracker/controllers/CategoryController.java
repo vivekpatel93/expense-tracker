@@ -91,6 +91,16 @@ public class CategoryController {
         redirectAttributes.addFlashAttribute("successMessage", "Category updated successfully!");
         return "redirect:/categories"; // Redirect back to transaction list
     }
+    @GetMapping("/categories/delete/{id}")
+    public String deleteCategory(@PathVariable Long id,
+                                 RedirectAttributes redirectAttributes) {
+
+        categoryService.deleteById(id);
+        redirectAttributes.addFlashAttribute("successMessage",
+                "Category deleted successfully!");
+
+        return "redirect:/categories";
+    }
 
 
 }
